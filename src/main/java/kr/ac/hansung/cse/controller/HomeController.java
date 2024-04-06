@@ -1,8 +1,9 @@
-package kr.ac.hansung.controller;
+package kr.ac.hansung.cse.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +17,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
+//    @GetMapping("/") 위에꺼랑 같은 방식
     public String home(HttpServletRequest request) {
 
         String url = request.getRequestURL().toString();
