@@ -13,6 +13,7 @@
   <body>
 <%--  <p><a herf="/helloSpringMVC/offers"></a> Show current offers</p> 아직 여기 url처리하는 컨트롤러 없어서 에러--%>
   <p><a href="${pageContext.request.contextPath}/offers"> Show current offers</a></p>
+  <p><a href="${pageContext.request.contextPath}/createoffer"> Add a new offers</a></p>
   </body>
 
 </html>

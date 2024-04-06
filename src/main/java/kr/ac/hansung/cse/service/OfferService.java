@@ -19,6 +19,7 @@ public class OfferService {
     }
 
     public void insert(Offer offer) {
+
         offerDao.insert(offer);
     }
 }

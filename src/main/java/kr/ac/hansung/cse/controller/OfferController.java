@@ -11,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -27,4 +28,35 @@ public class OfferController {
 
         return "offers";
     }
+
+    @GetMapping("/createoffer")
+    public String createOffer(Model model){
+
+        model.addAttribute("offer", new Offer());
+
+
+        return "createoffer";
+    }
+    @PostMapping("/docreate")
+    public String doCreate(Model model, @Valid Offer offer, BindingResult result){
+        // System.out.println(offer);
+        //오류출력
+        if(result.hasErrors()) {
+            System.out.println("== Form data does not validated ==");
+
+            List<ObjectError> errors = result.getAllErrors();
+
+            for(ObjectError error:errors) {
+                System.out.println(error.getDefaultMessage());
+            }
+
+            return "createoffer";
+        }
+
+        // Controller -> Service -> Dao
+        offerService.insert(offer);
+
+        return "offercreated";
+    }
+
 }
